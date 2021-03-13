@@ -1,0 +1,36 @@
+{
+  "name": "tridentforever",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "main": "package.json",
+  "author": "Matt Coffyn <hello@mattcoffyn.dev>",
+  "license": "UNLICENSED",
+  "scripts": {
+    "start": "sanity start ",
+    "build": "sanity build"
+  },
+  "keywords": [
+    "sanity"
+  ],
+  "dependencies": {
+    "@sanity/base": "^2.6.0",
+    "@sanity/cli": "^2.6.0",
+    "@sanity/components": "^2.2.6",
+    "@sanity/core": "^2.6.1",
+    "@sanity/dashboard": "^2.2.6",
+    "@sanity/default-layout": "^2.6.0",
+    "@sanity/default-login": "^2.2.6",
+    "@sanity/desk-tool": "^2.6.1",
+    "@sanity/google-maps-input": "^2.6.0",
+    "@sanity/studio-hints": "^2.4.3",
+    "@sanity/vision": "^2.2.6",
+    "date-fns": "^2.19.0",
+    "prop-types": "^15.7",
+    "react": "^17.0",
+    "react-dom": "^17.0",
+    "react-icons": "^3.11.0",
+    "sanity-plugin-dashboard-widget-document-list": "^0.0.11",
+    "sanity-plugin-dashboard-widget-netlify": "^1.0.1"
+  }
+}
