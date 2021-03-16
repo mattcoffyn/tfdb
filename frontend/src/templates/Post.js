@@ -2,7 +2,7 @@ import { graphql } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
 import PortableText from '../components/PortableText';
-import { GatsbyImage } from "gatsby-plugin-image";
+import SanityImage from 'gatsby-plugin-sanity-image';
 import { dateToLocaleString } from '../utils/formatDates';
 
 const PostStyles = styled.div`
@@ -49,9 +49,7 @@ const Post = ({ data: { post } }) => {
       {console.log(post.mainImage.asset.fluid)}
       <aside></aside>
       <section>
-        <GatsbyImage
-          image={post.mainImage.childImageSharp.gatsbyImageData}
-          style={{ marginBottom: '2rem' }} />
+        <SanityImage image={post.mainImage} style={{ marginBottom: '2rem' }} />
         <div className="info">
           <p>{`Posted by ${post.authors[0].author.name} on ${dateToLocaleString(
             post.publishedAt
@@ -96,13 +94,9 @@ export const query = graphql`
       }
       id
       mainImage {
-        asset {
-          fluid(maxWidth: 500) {
-            ...GatsbySanityImageFluid
-          }
-          description
-        }
+        alt
         caption
+        ...ImageWithPreview
       }
       title
       publishedAt
