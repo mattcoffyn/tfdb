@@ -5,18 +5,9 @@ import schemaTypes from 'all:part:@sanity/base/schema-type';
 
 // We import object and document schemas
 import blockContent from './documents/blockContent';
-import crewMember from './documents/crewMember';
-import castMember from './documents/castMember';
-import movie from './documents/movie';
-import person from './documents/person';
-import screening from './documents/screening';
-import plotSummary from './documents/plotSummary';
-import plotSummaries from './documents/plotSummaries';
-import tag from './documents/tag';
 import author from './documents/author';
 import category from './documents/category';
 import post from './documents/post';
-import siteSettings from './documents/siteSettings';
 
 // Object types
 import bodyPortableText from './objects/bodyPortableText';
@@ -28,17 +19,12 @@ import authorReference from './objects/authorReference';
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
   // We name our schema
-  name: 'blog',
+  name: 'default',
   // Then proceed to concatenate our document type
   // to the ones provided by any plugins that are installed
   types: schemaTypes.concat([
     // The following are document types which will appear
     // in the studio.
-    movie,
-    person,
-    screening,
-    tag,
-    siteSettings,
     post,
     category,
     author,
@@ -50,9 +36,5 @@ export default createSchema({
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
     blockContent,
-    plotSummary,
-    plotSummaries,
-    castMember,
-    crewMember,
   ]),
 });

@@ -1,7 +1,7 @@
 import { graphql } from 'gatsby';
 import * as React from 'react';
 import styled from 'styled-components';
-import FeedItem from '../components/FeedItem';
+// import FeedItem from '../components/FeedItem';
 import SEO from '../components/SEO';
 
 const FeedStyles = styled.section`
@@ -9,31 +9,19 @@ const FeedStyles = styled.section`
   grid-template-columns: 1fr;
   gap: 2rem;
   width: 100%;
+  max-width: var(--maxWidth);
 `;
 
-function mergeDataSources(a, b, c) {
-  // const newA = [...a];
-  // const newB = [...b];
-  // Array.prototype.push.apply(newA, newB);
-  const newA = a.concat(a, b, c);
-  newA.sort((a, b) =>
-    a._updatedAt < b._updatedAt ? 1 : b._updatedAt < a._updatedAt ? -1 : 0
-  );
-  return newA;
-}
-
 const IndexPage = ({ data }) => {
-  const [feedData, setFeedData] = React.useState(
-    mergeDataSources(data.movies.nodes, data.people.nodes, data.news.nodes)
-  );
+  // const posts = data.posts.nodes;
 
   return (
     <FeedStyles>
       <SEO />
       <h1>Feed</h1>
-      {feedData.map((item) => (
+      {/* {posts.map((item) => (
         <FeedItem key={item.id} item={item} />
-      ))}
+      ))} */}
     </FeedStyles>
   );
 };
@@ -41,63 +29,37 @@ const IndexPage = ({ data }) => {
 export default IndexPage;
 
 export const query = graphql`
-  query GetAllMovies {
-    movies: allSanityMovie {
+  query GetAllPosts {
+    posts: allSanityPost(sort: { fields: publishedAt, order: DESC }) {
       nodes {
-        _type
+        _createdAt
+        _updatedAt
         id
-        title
-        overview {
-          children {
-            text
-          }
-        }
         slug {
           current
         }
-        tags {
-          title
-        }
-        poster {
-          asset {
-            fluid(maxWidth: 200) {
-              ...GatsbySanityImageFluid
-            }
-          }
-        }
-        _createdAt
-        _updatedAt
-      }
-    }
-    people: allSanityPerson(
-      sort: { fields: _updatedAt, order: DESC }
-      limit: 10
-    ) {
-      nodes {
-        id
-        _type
-        name
-        image {
-          asset {
-            fluid(maxWidth: 200) {
-              ...GatsbySanityImageFluid
-            }
-            description
-          }
-        }
-        _createdAt
-        _updatedAt
-      }
-    }
-    news: allSanityNews {
-      nodes {
-        _type
-        _createdAt
-        _updatedAt
-        id
-        content
-        blurb
         title
+        publishedAt
+        mainImage {
+          asset {
+            fluid(maxWidth: 300) {
+              ...GatsbySanityImageFluid
+            }
+          }
+        }
+        authors {
+          author {
+            name
+            id
+          }
+        }
+        categories {
+          id
+          title
+          color
+          isMajor
+        }
+        _rawExcerpt(resolveReferences: { maxDepth: 10 })
       }
     }
   }
