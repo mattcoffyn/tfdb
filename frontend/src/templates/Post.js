@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import PortableText from '../components/PortableText';
 import SanityImage from 'gatsby-plugin-sanity-image';
 import { dateToLocaleString } from '../utils/formatDates';
+import { PlaceholderImage } from '../components/PlaceholderImage';
 
 const PostStyles = styled.div`
   display: grid;
@@ -48,11 +49,16 @@ const Post = ({ data: { post } }) => {
       <h2 className="title">{post.title}</h2>
       <aside></aside>
       <section>
-        <SanityImage
-          image={...post.mainImage}
-          style={{ marginBottom: '2rem' }}
-          alt={post.mainImage.alt}
-        />
+        {post.mainImage ? (
+          <SanityImage
+            {...post.mainImage}
+            width={1000}
+            alt={post.mainImage.alt}
+            className="results-image"
+          />
+        ) : (
+          <PlaceholderImage />
+        )}
         <div className="info">
           <p>{`Posted by ${post.authors[0].author.name} on ${dateToLocaleString(
             post.publishedAt
@@ -98,7 +104,6 @@ export const query = graphql`
       id
       mainImage {
         alt
-        caption
         ...ImageWithPreview
       }
       title
