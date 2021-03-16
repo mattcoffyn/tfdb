@@ -46,10 +46,13 @@ const Post = ({ data: { post } }) => {
   return (
     <PostStyles>
       <h2 className="title">{post.title}</h2>
-      {console.log(post.mainImage.asset.fluid)}
       <aside></aside>
       <section>
-        <SanityImage image={post.mainImage} style={{ marginBottom: '2rem' }} />
+        <SanityImage
+          image={...post.mainImage}
+          style={{ marginBottom: '2rem' }}
+          alt={post.mainImage.alt}
+        />
         <div className="info">
           <p>{`Posted by ${post.authors[0].author.name} on ${dateToLocaleString(
             post.publishedAt
