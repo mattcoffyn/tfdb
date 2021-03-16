@@ -49,22 +49,20 @@ const Post = ({ data: { post } }) => {
       <h2 className="title">{post.title}</h2>
       <aside></aside>
       <section>
-        {post.mainImage ? (
+        {post.mainImage && (
           <SanityImage
             {...post.mainImage}
             width={1000}
             alt={post.mainImage.alt}
             className="results-image"
           />
-        ) : (
-          <PlaceholderImage />
         )}
         <div className="info">
-          <p>{`Posted by ${post.authors[0].author.name} on ${dateToLocaleString(
-            post.publishedAt
-          )}`}</p>
+          <p>{`Posted by ${
+            post.authors[0] ? post.authors[0].author.name : 'Anonymous'
+          } on ${dateToLocaleString(post.publishedAt)}`}</p>
           <div>
-            {post.categories.map((category) => (
+            {post.categories?.map((category) => (
               <TagStyles
                 key={category.id}
                 isMajor={category.isMajor}
