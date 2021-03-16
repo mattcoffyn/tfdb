@@ -6,7 +6,7 @@ export const PlaceholderImage = () => {
     <>
       <StaticImage
         StaticImage
-        src="../images/placeholder.jpg"
+        src="..data/images/placeholder.jpg"
         alt="Placeholder Image"
         placeholder="blurred"
         layout="fixed"
