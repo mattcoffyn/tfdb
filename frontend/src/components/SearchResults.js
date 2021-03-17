@@ -7,12 +7,13 @@ const SearchResultStyles = styled.div`
   z-index: 10;
   position: absolute;
   left: 50%;
-  top: 300px;
+  top: 275px;
   width: 100%;
   max-width: var(--maxWidth);
   transform: translate(-50%, 0%);
-  background: var(--black);
-  border: 5px solid var(--white);
+  background: ${({ theme }) => theme.bg};
+  border: 5px solid ${({ theme }) => theme.text};
+  border-bottom: 10px solid ${({ theme }) => theme.text};
   padding: 2rem;
   h2 {
     font-size: 5rem;
@@ -29,7 +30,7 @@ const SearchResultStyles = styled.div`
     color: rgba(255, 255, 255, 0.6);
   }
   .category-list {
-    border-bottom: 1px solid var(--white);
+    border-bottom: 1px solid ${({ theme }) => theme.text};
     padding-bottom: 1rem;
     div {
       display: flex;
@@ -51,7 +52,7 @@ const PostItemStyles = styled.div`
   gap: 3rem;
   margin: 1rem;
   padding: 2rem 3rem;
-  border-bottom: 1px solid var(--white);
+  border-bottom: 1px solid ${({ theme }) => theme.text};
   .post-header {
     width: 100%;
     display: flex;
@@ -75,7 +76,9 @@ const PostItemStyles = styled.div`
         color: red;
       }
       span {
-        color: white;
+        color: ${({ theme }) => theme.text};
+        margin: 0;
+        padding: 0;
       }
     }
   }

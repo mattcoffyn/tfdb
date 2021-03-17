@@ -1,36 +1,8 @@
 import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
-import { GlobalStyles } from '../styles/GlobalStyles';
+import { GlobalStyles, darkTheme, lightTheme } from '../styles/GlobalStyles';
 import { useLocalStorageState } from '../utils/useLocalStorageState';
 import Nav from './Nav';
-
-export const colours = {
-  black: '#212227',
-  white: '#EFF7FF',
-  orange: '#F4743B',
-  lime: '#BEEE62',
-  green: '#70AE6E',
-};
-
-export const darkTheme = {
-  bg: colours.black,
-  text: colours.white,
-  link: colours.lime,
-  border: colours.orange,
-  toggleBg: colours.black,
-  toggleIcon: colours.white,
-  toggleBorder: 'red',
-};
-
-export const lightTheme = {
-  bg: colours.white,
-  text: colours.black,
-  link: colours.orange,
-  border: colours.lime,
-  toggleBg: colours.white,
-  toggleIcon: colours.black,
-  toggleBorder: colours.orange,
-};
 
 const LayoutStyles = styled.div`
   width: 100%;
@@ -42,11 +14,10 @@ const LayoutStyles = styled.div`
 
 const ContentStyles = styled.main`
     flex: 1;
-    padding: 2rem;
     width: 100%;
     max-width: var(--maxWidth);
     margin: 0 auto;
-    margin-top: 70px;
+    /* margin-top: 70px; */
 
   }
 `;

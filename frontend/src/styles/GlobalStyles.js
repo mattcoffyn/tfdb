@@ -1,13 +1,46 @@
 import { createGlobalStyle } from 'styled-components';
 
+export const colours = {
+  black: '#212227',
+  white: '#EFF7FF',
+  orange: '#F4743B',
+  lime: '#BEEE62',
+  green: '#70AE6E',
+};
+
+export const darkTheme = {
+  bg: colours.black,
+  text: colours.white,
+  link: colours.lime,
+  linkHighlight: colours.green,
+  border: colours.orange,
+  dmToggleBg: colours.black,
+  dmToggleIcon: colours.white,
+  dmToggleBorder: 'red',
+};
+
+export const lightTheme = {
+  bg: colours.white,
+  text: colours.black,
+  link: colours.orange,
+  linkHighlight: colours.lime,
+  border: colours.lime,
+  dmToggleBg: colours.white,
+  dmToggleIcon: colours.black,
+  dmToggleBorder: colours.orange,
+};
+
 export const GlobalStyles = createGlobalStyle`
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap');
+
   html {
     --black: #212227;
     --white: #EFF7FF;
     --orange: #F4743B;
     --lime: #BEEE62;
     --green: #70AE6E;
-    --maxWidth: 1400px;
+    --maxWidth: 1200px;
     font-size: 62.5%;
 
     box-sizing: border-box;
@@ -18,7 +51,7 @@ export const GlobalStyles = createGlobalStyle`
     box-sizing: inherit;
   }
   body {
-    font-family: --apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: 'Open Sans', --apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     padding: 0;
     margin: 0;
     font-size: 1.7rem;
@@ -39,13 +72,6 @@ export const GlobalStyles = createGlobalStyle`
   fieldset {
     border-color: rgba(0,0,0,0.1);
     border-width: 1px;
-  }
-
-  ${
-    '' /* .gatsby-image-wrapper img[src*=base64\\,] {
-    image-rendering: -moz-crisp-edges;
-    image-rendering: pixelated;
-  } */
   }
 
   hr {

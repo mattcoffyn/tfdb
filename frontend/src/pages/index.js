@@ -1,6 +1,7 @@
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import * as React from 'react';
 import styled from 'styled-components';
+import FeedItem from '../components/FeedItem';
 // import FeedItem from '../components/FeedItem';
 import SEO from '../components/SEO';
 
@@ -10,6 +11,7 @@ const FeedStyles = styled.section`
   gap: 2rem;
   width: 100%;
   max-width: var(--maxWidth);
+  padding-top: 2rem;
 `;
 
 const IndexPage = ({ data }) => {
@@ -18,10 +20,9 @@ const IndexPage = ({ data }) => {
   return (
     <FeedStyles>
       <SEO />
-      <h1>Feed</h1>
-      {/* {posts.map((item) => (
-        <FeedItem key={item.id} item={item} />
-      ))} */}
+      {data.posts.nodes.map((post) => (
+        <FeedItem key={post.id} post={post} />
+      ))}
     </FeedStyles>
   );
 };
@@ -41,11 +42,8 @@ export const query = graphql`
         title
         publishedAt
         mainImage {
-          asset {
-            fluid(maxWidth: 300) {
-              ...GatsbySanityImageFluid
-            }
-          }
+          alt
+          ...ImageWithPreview
         }
         authors {
           author {

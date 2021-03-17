@@ -1,11 +1,9 @@
 import React from 'react';
-import { GatsbyImage } from "gatsby-plugin-image";
+import { GatsbyImage } from 'gatsby-plugin-image';
 import { getFluidGatsbyImage } from 'gatsby-source-sanity';
 import clientConfig from '../../client-config';
 
-export default ({ node }) => {
-  console.log();
-
+export const Figure = ({ node }) => {
   if (!node || !node.asset || !node.asset._id) {
     return null;
   }
@@ -16,7 +14,11 @@ export default ({ node }) => {
   );
   return (
     <figure>
-      <GatsbyImage image={fluidProps} alt={node.alt} style={{ padding: '3rem' }} />
+      <GatsbyImage
+        image={fluidProps}
+        alt={node.alt}
+        style={{ padding: '3rem' }}
+      />
       <figcaption style={{ fontStyle: 'italic' }}>{node.caption}</figcaption>
     </figure>
   );
