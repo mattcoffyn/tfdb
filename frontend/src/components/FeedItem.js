@@ -33,6 +33,7 @@ const FeedItemStyles = styled.article`
       font-weight: 800;
       text-transform: uppercase;
       line-height: 3rem;
+      color: ${({ theme }) => theme.text};
     }
     p {
       margin: 0;
@@ -85,7 +86,7 @@ const FeedItem = ({ post }) => {
       <div className="post-details">
         <div className="article-header">
           <Link to={`/posts/${post.slug.current}`}>
-            <h2 style={{ color: 'white' }}>{post.title}</h2>
+            <h2>{post.title}</h2>
           </Link>
           <p>{dateToLocaleString(post.publishedAt)}</p>
         </div>
