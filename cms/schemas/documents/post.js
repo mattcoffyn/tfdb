@@ -20,8 +20,7 @@ export default {
       name: 'slug',
       type: 'slug',
       title: 'Slug',
-      description:
-        'Some frontends will require a slug to be set to be able to show the post',
+      description: 'This is required to generate the post page',
       options: {
         source: 'title',
         maxLength: 96,
@@ -54,6 +53,8 @@ export default {
           type: 'authorReference',
         },
       ],
+      description:
+        'If none selected, the author will be displayed as "Anonymous"',
     },
     {
       name: 'categories',

@@ -12,6 +12,16 @@ export default {
       description: 'What is the category name?',
     },
     {
+      name: 'slug',
+      type: 'slug',
+      title: 'Slug',
+      description: `Generate the slug so it's page is available.`,
+      options: {
+        source: 'title',
+        maxLength: 96,
+      },
+    },
+    {
       name: 'description',
       type: 'text',
       title: 'Description',

@@ -18,7 +18,8 @@
     "dashboard-widget-netlify",
     "dashboard-widget-document-list",
     "dashboard-widget-structure-menu",
-    "color-picker"
+    "color-picker",
+    "dashboard-widget-gatsby"
   ],
   "env": {
     "development": {
