@@ -142,7 +142,9 @@ const Post = ({ data: { post } }) => {
       if (relatedPost._id !== post._id) {
         results.push(relatedPost);
       }
+      return null;
     });
+    return null;
   });
   const relatedContent = results.filter(
     (v, i, a) => a.findIndex((t) => t._id === v._id) === i

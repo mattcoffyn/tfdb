@@ -1,18 +1,14 @@
 module.exports = {
   siteMetadata: {
     title: 'Trident Digest',
-    titleTemplate: 'trident-forever',
+    titleTemplate: 'Trident Digest',
     twitterUsername: '',
     image: '',
     url: '',
   },
   plugins: [
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-image`,
-    `gatsby-plugin-sharp`,
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-react-helmet`,
-
     {
       resolve: `gatsby-source-filesystem`,
       options: {

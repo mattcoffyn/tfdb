@@ -1,5 +1,4 @@
-import { graphql, Link } from 'gatsby';
-import SanityImage from 'gatsby-plugin-sanity-image';
+import { graphql } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
 import FeedItem from '../components/FeedItem';
