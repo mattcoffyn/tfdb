@@ -24,10 +24,7 @@ const Layout = ({ children }) => {
     <>
       <Helmet>
         <meta charSet="utf-8" />
-        htmlAttributes=
-        {{
-          lang: 'en',
-        }}
+        <html lang="en" />
       </Helmet>
       <GlobalStyles />
       <LayoutStyles>
