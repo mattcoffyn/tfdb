@@ -20,6 +20,7 @@
     "babel-plugin-styled-components": "^1.11.1",
     "dotenv": "^8.2.0",
     "gatsby": "^3.0.4",
+    "gatsby-plugin-gatsby-cloud": "^2.1.0",
     "gatsby-plugin-image": "^1.0.1",
     "gatsby-plugin-react-helmet": "^4.0.0",
     "gatsby-plugin-sanity-image": "^0.6.0-beta.1",
