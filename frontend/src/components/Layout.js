@@ -1,111 +1,8 @@
 import React from 'react';
-import styled, { createGlobalStyle, ThemeProvider } from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
+import { GlobalStyles, darkTheme, lightTheme } from '../styles/GlobalStyles';
 import { useLocalStorageState } from '../utils/useLocalStorageState';
 import Nav from './Nav';
-import '@fontsource/open-sans/300.css';
-import '@fontsource/open-sans/400.css';
-import '@fontsource/open-sans/600.css';
-import '@fontsource/open-sans/700.css';
-import '@fontsource/open-sans/800.css';
-
-export const colours = {
-  black: '#212227',
-  white: '#EFF7FF',
-  orange: '#F4743B',
-  lime: '#BEEE62',
-  green: '#70AE6E',
-};
-
-export const darkTheme = {
-  bg: colours.black,
-  text: colours.white,
-  link: colours.lime,
-  linkHighlight: colours.green,
-  border: colours.orange,
-  dmToggleBg: colours.black,
-  dmToggleIcon: colours.white,
-  dmToggleBorder: 'red',
-};
-
-export const lightTheme = {
-  bg: colours.white,
-  text: colours.black,
-  link: colours.orange,
-  linkHighlight: colours.lime,
-  border: colours.lime,
-  dmToggleBg: colours.white,
-  dmToggleIcon: colours.black,
-  dmToggleBorder: colours.orange,
-};
-
-export const GlobalStyles = createGlobalStyle`
-
-  html {
-    --black: #212227;
-    --white: #EFF7FF;
-    --orange: #F4743B;
-    --lime: #BEEE62;
-    --green: #70AE6E;
-    --maxWidth: 1200px;
-    font-size: 62.5%;
-
-    box-sizing: border-box;
-    background: ${(props) => (props.theme === 'dark' ? '#212227' : '#EFF7FF')};
-    color: ${(props) => (props.theme === 'dark' ? '#EFF7FF' : '#212227')};
-  }
-  *, *:before, *:after {
-    box-sizing: inherit;
-  }
-  body {
-    font-family: 'Open Sans', --apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
-    padding: 0;
-    margin: 0;
-    font-size: 1.7rem;
-    line-height: 2;
-  }
-  a {
-    text-decoration: none;
-    color: ${(props) => (props.theme === 'dark' ? 'red' : '#F4743B')}
-  }
-  button {
-    font-family: 'Open Sans', --apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
-  }
-  input {
-    background: none;
-    color: var(--white);
-    font-size: 1.5rem;
-  }
-  fieldset {
-    border-color: rgba(0,0,0,0.1);
-    border-width: 1px;
-  }
-
-  hr {
-    border: 0;
-    height: 8px;
-  }
-  img {
-    max-width: 100%;
-  }
-  blockquote {
-  background: ${(props) =>
-    props.theme === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.05)'};
-  border-radius: 10px;
-  margin: 1.5em 10px;
-  padding: 0.5em 10px;
-  }
-  blockquote:before {
-    color: ${(props) => (props.theme === 'dark' ? '#ccc' : '#555')};
-    content: open-quote;
-    font-size: 4em;
-    line-height: 0.1em;
-    margin-right: 0.25em;
-    vertical-align: -0.4em;
-  }
-  blockquote p {
-    display: inline;
-  }
-`;
 
 const LayoutStyles = styled.div`
   width: 100%;
@@ -116,10 +13,13 @@ const LayoutStyles = styled.div`
 `;
 
 const ContentStyles = styled.main`
-  flex: 1;
-  width: 100%;
-  max-width: var(--maxWidth);
-  margin: 0 auto;
+    flex: 1;
+    width: 100%;
+    max-width: var(--maxWidth);
+    margin: 0 auto;
+    /* margin-top: 70px; */
+
+  }
 `;
 
 const Layout = ({ children }) => {
