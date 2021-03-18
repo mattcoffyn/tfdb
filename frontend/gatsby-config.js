@@ -12,7 +12,7 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-gatsby-cloud`,
+
     {
       resolve: `gatsby-source-filesystem`,
       options: {
