@@ -61,9 +61,14 @@ const FeedItemStyles = styled.article`
     }
   }
   .authors {
-    color: var(--white);
-    font-size: 1.5rem;
+    color: var(--red);
+    font-weight: 600;
+    font-size: 1.7rem;
     text-align: right;
+    margin-top: 1rem;
+    p {
+      display: inline;
+    }
     span {
       color: var(--white);
     }
