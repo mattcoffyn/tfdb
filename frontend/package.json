@@ -23,7 +23,6 @@
     "gatsby-plugin-react-helmet": "^4.0.0",
     "gatsby-plugin-sanity-image": "^0.6.0-beta.1",
     "gatsby-plugin-styled-components": "^4.0.0",
-    "gatsby-source-filesystem": "^3.0.0",
     "gatsby-source-sanity": "^6.0.5",
     "js-search": "^2.0.0",
     "normalize.css": "^8.0.1",
