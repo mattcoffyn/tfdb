@@ -21,7 +21,7 @@ const PostStyles = styled.div`
       text-align: right;
       line-height: 4rem;
       span {
-        color: ${({ theme }) => theme.link};
+        color: var(--red);
       }
     }
     .post-categories {
@@ -32,20 +32,20 @@ const PostStyles = styled.div`
       line-height: 2rem;
       p {
         display: inline;
-        color: ${({ theme }) => theme.link};
+        color: var(--red);
       }
       span {
-        color: ${({ theme }) => theme.text};
+        color: var(--white);
       }
     }
     .authors {
-      color: ${({ theme }) => theme.link};
+      color: var(--red);
       font-size: 1.5rem;
       text-align: right;
       padding-bottom: 2rem;
-      border-bottom: 1px solid ${({ theme }) => theme.text};
+      border-bottom: 1px solid var(--white);
       span {
-        color: ${({ theme }) => theme.text};
+        color: var(--white);
       }
     }
     .related-content {
@@ -72,7 +72,7 @@ const PostStyles = styled.div`
           text-transform: uppercase;
           margin: 0;
           padding: 0;
-          color: ${({ theme }) => theme.link};
+          color: var(--red);
         }
       }
       .no-related-content {
@@ -112,16 +112,16 @@ const PostStyles = styled.div`
     }
     .post-body {
       a {
-        color: ${({ theme }) => theme.link};
+        color: var(--red);
       }
       blockquote {
-        background: ${({ theme }) => theme.quoteBg};
+        background: rgba(255, 255, 255, 0.1);
         border-radius: 10px;
         margin: 1.5em 10px;
         padding: 0.5em 10px;
       }
       blockquote:before {
-        color: ${({ theme }) => theme.quoteMarks};
+        color: #ccc;
         content: open-quote;
         font-size: 4em;
         line-height: 0.1em;
@@ -149,8 +149,6 @@ const Post = ({ data: { post } }) => {
   const relatedContent = results.filter(
     (v, i, a) => a.findIndex((t) => t._id === v._id) === i
   );
-
-  console.log(relatedContent);
 
   return (
     <PostStyles>

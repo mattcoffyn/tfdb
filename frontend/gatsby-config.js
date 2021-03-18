@@ -15,8 +15,6 @@ module.exports = {
         projectId: '16limuy3',
         dataset: 'production',
         token: process.env.SANITY_READ_TOKEN,
-        watchMode: true,
-        overlayDrafts: true,
       },
     },
     {

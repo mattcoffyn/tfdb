@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import FeedItem from './FeedItem';
+import { globalHistory } from '@reach/router';
 
 const SearchResultStyles = styled.div`
   z-index: 10;
@@ -10,9 +11,9 @@ const SearchResultStyles = styled.div`
   width: 100%;
   max-width: var(--maxWidth);
   transform: translate(-50%, 0%);
-  background: ${({ theme }) => theme.bg};
-  border: 5px solid ${({ theme }) => theme.text};
-  border-bottom: 10px solid ${({ theme }) => theme.text};
+  background: var(--black);
+  border: 5px solid var(--white);
+  border-bottom: 10px solid var(--white);
   padding: 2rem;
   .title {
     font-size: 5rem;
@@ -37,7 +38,7 @@ const SearchResultStyles = styled.div`
     gap: 2rem;
   }
   .category-list {
-    border-bottom: 1px solid ${({ theme }) => theme.text};
+    border-bottom: 1px solid var(--white);
     padding-bottom: 1rem;
     div {
       display: flex;
@@ -90,6 +91,12 @@ const SearchResults = ({ setIsOpen, results, isLoading, inputRef }) => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [wrapperRef, inputRef, setIsOpen]);
+
+  useEffect(() => {
+    return globalHistory.listen(({ action }) => {
+      if (action === 'PUSH') setIsOpen(false);
+    });
+  }, [setIsOpen]);
 
   if (isLoading) {
     return (

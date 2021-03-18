@@ -2,11 +2,10 @@ import { Link } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
 import SearchContainer from './SearchContainer';
-import { FaSun, FaMoon } from 'react-icons/fa';
 
 const NavStyles = styled.div`
   width: 100%;
-  background: ${({ theme }) => theme.bg};
+  background: var(--black);
 
   nav {
     display: grid;
@@ -17,7 +16,7 @@ const NavStyles = styled.div`
     max-width: var(--maxWidth);
     padding: 1rem 0 0;
     text-transform: uppercase;
-    border-bottom: 4rem solid ${({ theme }) => theme.text};
+    border-bottom: 4rem solid var(--white);
   }
   .logo-container {
     grid-row: 1/3;
@@ -31,7 +30,7 @@ const NavStyles = styled.div`
     font-weight: 800;
     letter-spacing: -0.5rem;
     margin: 0 0 0.8rem;
-    color: ${({ theme }) => theme.text};
+    color: var(--white);
     span {
       margin: 0;
       line-height: 11rem;
@@ -63,7 +62,7 @@ const NavStyles = styled.div`
         position: relative;
         overflow: hidden;
         z-index: 10;
-        color: ${({ theme }) => theme.link};
+        color: var(--red);
         &::after {
           width: 0;
           content: '';
@@ -72,7 +71,7 @@ const NavStyles = styled.div`
           bottom: -8px;
           transition: 0.35s cubic-bezier(0.2, 0.1, 0, 1.8);
           height: calc(100% - 15px);
-          background: ${({ theme }) => theme.linkHighlight};
+          background: var(--green);
           z-index: -1;
         }
         &:hover {
@@ -95,38 +94,35 @@ const NavStyles = styled.div`
     }
     input {
       padding: 1rem;
-      color: ${({ theme }) => theme.text};
-      border: 5px solid ${({ theme }) => theme.text};
-      background: ${({ theme }) => theme.bg};
+      color: var(--white);
+      border: 2px solid var(--white);
+      background: var(--black);
       font-size: 3rem;
       width: 100%;
     }
   }
 `;
 
-const Button = styled.button`
-  background: ${({ theme }) => theme.dmToggleBg};
-  border: 2px solid ${({ theme }) => theme.dmToggleBorder};
-  color: ${({ theme }) => theme.dmToggleIcon};
-  border-radius: 40px;
-  cursor: pointer;
-  font-size: 0.8rem;
-  padding: 0.6rem;
-  height: 40px;
-  width: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 1rem 2rem 0 0;
-  position: absolute;
-  top: 0px;
-  right: 0px;
-`;
+// const Button = styled.button`
+//   background: ${({ theme }) => theme.dmToggleBg};
+//   border: 2px solid ${({ theme }) => theme.dmToggleBorder};
+//   color: ${({ theme }) => theme.dmToggleIcon};
+//   border-radius: 40px;
+//   cursor: pointer;
+//   font-size: 0.8rem;
+//   padding: 0.6rem;
+//   height: 40px;
+//   width: 40px;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   margin: 1rem 2rem 0 0;
+//   position: absolute;
+//   top: 0px;
+//   right: 0px;
+// `;
 
-const Nav = ({ isDark, setIsDark }) => {
-  const darkModeHandler = () => {
-    setIsDark(isDark === 'light' ? 'dark' : 'light');
-  };
+const Nav = () => {
   return (
     <NavStyles>
       <nav>
@@ -164,9 +160,6 @@ const Nav = ({ isDark, setIsDark }) => {
         </ul>
         <SearchContainer />
       </nav>
-      <Button onClick={darkModeHandler}>
-        {isDark === 'light' ? <FaSun size={20} /> : <FaMoon size={20} />}
-      </Button>
     </NavStyles>
   );
 };

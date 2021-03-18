@@ -1,7 +1,6 @@
 import React from 'react';
-import styled, { ThemeProvider } from 'styled-components';
-import { GlobalStyles, darkTheme, lightTheme } from '../styles/GlobalStyles';
-import { useLocalStorageState } from '../utils/useLocalStorageState';
+import styled from 'styled-components';
+import { GlobalStyles } from '../styles/GlobalStyles';
 import Nav from './Nav';
 
 const LayoutStyles = styled.div`
@@ -20,15 +19,14 @@ const ContentStyles = styled.main`
 `;
 
 const Layout = ({ children }) => {
-  const [isDark, setIsDark] = useLocalStorageState('darkMode', 'dark');
   return (
-    <ThemeProvider theme={isDark === 'dark' ? darkTheme : lightTheme}>
-      <GlobalStyles theme={isDark} />
+    <>
+      <GlobalStyles />
       <LayoutStyles>
-        <Nav isDark={isDark} setIsDark={setIsDark} />
+        <Nav />
         <ContentStyles>{children}</ContentStyles>
       </LayoutStyles>
-    </ThemeProvider>
+    </>
   );
 };
 

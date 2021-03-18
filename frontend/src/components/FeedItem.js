@@ -33,7 +33,7 @@ const FeedItemStyles = styled.article`
       font-weight: 800;
       text-transform: uppercase;
       line-height: 3rem;
-      color: ${({ theme }) => theme.text};
+      color: var(--white);
     }
     p {
       margin: 0;
@@ -47,7 +47,7 @@ const FeedItemStyles = styled.article`
     justify-content: flex-end;
   }
   .post-categories {
-    color: ${({ theme }) => theme.link};
+    color: var(--red);
     text-transform: uppercase;
     font-weight: 800;
     font-size: 2rem;
@@ -57,15 +57,15 @@ const FeedItemStyles = styled.article`
       display: inline;
     }
     span {
-      color: ${({ theme }) => theme.text};
+      color: var(--white);
     }
   }
   .authors {
-    color: ${({ theme }) => theme.link};
+    color: var(--red);
     font-size: 1.5rem;
     text-align: right;
     span {
-      color: ${({ theme }) => theme.text};
+      color: var(--white);
     }
   }
 `;
