@@ -13,13 +13,10 @@ const LayoutStyles = styled.div`
 `;
 
 const ContentStyles = styled.main`
-    flex: 1;
-    width: 100%;
-    max-width: var(--maxWidth);
-    margin: 0 auto;
-    /* margin-top: 70px; */
-
-  }
+  flex: 1;
+  width: 100%;
+  max-width: var(--maxWidth);
+  margin: 0 auto;
 `;
 
 const Layout = ({ children }) => {
