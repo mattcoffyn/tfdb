@@ -11,17 +11,20 @@ export const colours = {
   orange: '#F4743B',
   lime: '#BEEE62',
   green: '#70AE6E',
+  red: '#DF2935',
 };
 
 export const darkTheme = {
   bg: colours.black,
   text: colours.white,
-  link: colours.lime,
+  link: colours.red,
   linkHighlight: colours.green,
   border: colours.orange,
   dmToggleBg: colours.black,
   dmToggleIcon: colours.white,
   dmToggleBorder: 'red',
+  quoteBg: 'rgba(255, 255, 255, 0.1)',
+  quoteMarks: '#ccc',
 };
 
 export const lightTheme = {
@@ -33,6 +36,8 @@ export const lightTheme = {
   dmToggleBg: colours.white,
   dmToggleIcon: colours.black,
   dmToggleBorder: colours.orange,
+  quoteBg: 'rgba(0, 0, 0, 0.2)',
+  quoteMarks: '#555',
 };
 
 export const GlobalStyles = createGlobalStyle`
@@ -62,44 +67,12 @@ export const GlobalStyles = createGlobalStyle`
   }
   a {
     text-decoration: none;
-    color: ${(props) => (props.theme === 'dark' ? 'red' : '#F4743B')}
   }
   button {
     font-family: 'Open Sans', --apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,  'Helvetica Neue', sans-serif;
   }
-  input {
-    background: none;
-    color: var(--white);
-    font-size: 1.5rem;
-  }
-  fieldset {
-    border-color: rgba(0,0,0,0.1);
-    border-width: 1px;
-  }
-
-  hr {
-    border: 0;
-    height: 8px;
-  }
   img {
     max-width: 100%;
   }
-  blockquote {
-  background: ${(props) =>
-    props.theme === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.05)'};
-  border-radius: 10px;
-  margin: 1.5em 10px;
-  padding: 0.5em 10px;
-}
-blockquote:before {
-  color: ${(props) => (props.theme === 'dark' ? '#ccc' : '#555')};
-  content: open-quote;
-  font-size: 4em;
-  line-height: 0.1em;
-  margin-right: 0.25em;
-  vertical-align: -0.4em;
-}
-blockquote p {
-  display: inline;
-}
+
 `;

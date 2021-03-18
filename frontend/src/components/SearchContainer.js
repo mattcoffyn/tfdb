@@ -16,6 +16,16 @@ const SearchContainer = () => {
             title
             id
           }
+          _rawExcerpt
+          publishedAt
+          slug {
+            current
+          }
+          authors {
+            author {
+              name
+            }
+          }
           mainImage {
             alt
             ...ImageWithPreview

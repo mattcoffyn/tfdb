@@ -21,11 +21,10 @@ const PostStyles = styled.div`
       text-align: right;
       line-height: 4rem;
       span {
-        color: ${({ theme }) => theme.dmToggleBorder};
+        color: ${({ theme }) => theme.link};
       }
     }
     .post-categories {
-      color: ${({ theme }) => theme.dmToggleBorder};
       text-transform: uppercase;
       font-weight: 800;
       font-size: 2rem;
@@ -33,13 +32,14 @@ const PostStyles = styled.div`
       line-height: 2rem;
       p {
         display: inline;
+        color: ${({ theme }) => theme.link};
       }
       span {
         color: ${({ theme }) => theme.text};
       }
     }
     .authors {
-      color: ${({ theme }) => theme.dmToggleBorder};
+      color: ${({ theme }) => theme.link};
       font-size: 1.5rem;
       text-align: right;
       padding-bottom: 2rem;
@@ -72,7 +72,7 @@ const PostStyles = styled.div`
           text-transform: uppercase;
           margin: 0;
           padding: 0;
-          color: ${({ theme }) => theme.dmToggleBorder};
+          color: ${({ theme }) => theme.link};
         }
       }
       .no-related-content {
@@ -108,6 +108,28 @@ const PostStyles = styled.div`
         font-size: 4rem;
         font-weight: 800;
         text-transform: uppercase;
+      }
+    }
+    .post-body {
+      a {
+        color: ${({ theme }) => theme.link};
+      }
+      blockquote {
+        background: ${({ theme }) => theme.quoteBg};
+        border-radius: 10px;
+        margin: 1.5em 10px;
+        padding: 0.5em 10px;
+      }
+      blockquote:before {
+        color: ${({ theme }) => theme.quoteMarks};
+        content: open-quote;
+        font-size: 4em;
+        line-height: 0.1em;
+        margin-right: 0.25em;
+        vertical-align: -0.4em;
+      }
+      blockquote p {
+        display: inline;
       }
     }
   }
@@ -157,7 +179,7 @@ const Post = ({ data: { post } }) => {
                     to={`/categories/${category.slug.current}`}
                     key={category.id}
                   >
-                    <p>{category.title}</p>;
+                    <p>{category.title}</p>
                   </Link>
                 );
               }
@@ -212,7 +234,7 @@ const Post = ({ data: { post } }) => {
         <div className="title">
           <h2>{post.title}</h2>
         </div>
-        <div>
+        <div className="post-body">
           {post.mainImage && (
             <>
               <SanityImage

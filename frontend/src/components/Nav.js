@@ -63,6 +63,7 @@ const NavStyles = styled.div`
         position: relative;
         overflow: hidden;
         z-index: 10;
+        color: ${({ theme }) => theme.link};
         &::after {
           width: 0;
           content: '';
@@ -96,6 +97,7 @@ const NavStyles = styled.div`
       padding: 1rem;
       color: ${({ theme }) => theme.text};
       border: 5px solid ${({ theme }) => theme.text};
+      background: ${({ theme }) => theme.bg};
       font-size: 3rem;
       width: 100%;
     }

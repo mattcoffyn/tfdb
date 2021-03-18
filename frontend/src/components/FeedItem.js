@@ -47,7 +47,7 @@ const FeedItemStyles = styled.article`
     justify-content: flex-end;
   }
   .post-categories {
-    color: ${({ theme }) => theme.dmToggleBorder};
+    color: ${({ theme }) => theme.link};
     text-transform: uppercase;
     font-weight: 800;
     font-size: 2rem;
@@ -61,7 +61,7 @@ const FeedItemStyles = styled.article`
     }
   }
   .authors {
-    color: ${({ theme }) => theme.dmToggleBorder};
+    color: ${({ theme }) => theme.link};
     font-size: 1.5rem;
     text-align: right;
     span {

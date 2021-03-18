@@ -2,7 +2,6 @@ import { graphql, Link } from 'gatsby';
 import * as React from 'react';
 import styled from 'styled-components';
 import FeedItem from '../components/FeedItem';
-// import FeedItem from '../components/FeedItem';
 import SEO from '../components/SEO';
 
 const FeedStyles = styled.section`
