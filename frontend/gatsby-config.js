@@ -10,6 +10,8 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
+    `gatsby-plugin-styled-components`,
+    `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -29,7 +31,6 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-sanity-image',
       options: {
-        // Sanity project info (required)
         projectId: '16limuy3',
         dataset: 'production',
         customImageTypes: ['SanityMainImage'],
