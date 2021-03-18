@@ -1,9 +1,6 @@
 import React from 'react';
-import { GlobalStyle } from './src/styles/GlobalStyles';
+import Layout from './src/components/Layout';
 
-export const wrapPageElement = ({ element }) => (
-  <>
-    <GlobalStyle />
-    {element}
-  </>
-);
+export const wrapPageElement({ element, props }) {
+  return <Layout {...props}>{element}</Layout>;
+}
