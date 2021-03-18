@@ -9,6 +9,7 @@ module.exports = {
   plugins: [
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-react-helmet`,
+    'gatsby-plugin-robots-txt',
     {
       resolve: 'gatsby-source-sanity',
       options: {

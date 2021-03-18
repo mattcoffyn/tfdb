@@ -61,7 +61,7 @@ const FeedItemStyles = styled.article`
     }
   }
   .authors {
-    color: var(--red);
+    color: var(--white);
     font-size: 1.5rem;
     text-align: right;
     span {
