@@ -123,7 +123,7 @@ const SearchResults = ({ setIsOpen, results, isLoading, inputRef }) => {
       <div className="post-list">
         <h3 className="subtitle">Posts</h3>
         {postResults.length ? (
-          postResults.map((post) => <FeedItem post={post} />)
+          postResults.map((post) => <FeedItem key={post.id} post={post} />)
         ) : (
           <p className="no-results">No results found</p>
         )}

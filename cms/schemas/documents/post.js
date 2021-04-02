@@ -25,24 +25,13 @@ export default {
         source: 'title',
         maxLength: 96,
       },
+      validation: (Rule) => Rule.required(),
     },
     {
       name: 'publishedAt',
       type: 'datetime',
       title: 'Published at',
       description: 'This can be used to schedule post for publishing',
-    },
-    {
-      name: 'mainImage',
-      type: 'mainImage',
-      title: 'Main image',
-    },
-    {
-      name: 'excerpt',
-      type: 'excerptPortableText',
-      title: 'Excerpt',
-      description:
-        'This ends up on summary pages, on Google, when people share your post in social media.',
     },
     {
       name: 'authors',
@@ -56,6 +45,7 @@ export default {
       description:
         'If none selected, the author will be displayed as "Anonymous"',
     },
+
     {
       name: 'categories',
       type: 'array',
@@ -71,9 +61,23 @@ export default {
       validation: (Rule) => Rule.unique(),
     },
     {
+      name: 'mainImage',
+      type: 'mainImage',
+      title: 'Main image',
+    },
+    {
+      name: 'excerpt',
+      type: 'excerptPortableText',
+      title: 'Excerpt',
+      description:
+        'This ends up on summary pages, on Google, when people share your post in social media.',
+      validation: (Rule) => Rule.required(),
+    },
+    {
       name: 'body',
       type: 'bodyPortableText',
       title: 'Body',
+      validation: (Rule) => Rule.required(),
     },
   ],
   orderings: [

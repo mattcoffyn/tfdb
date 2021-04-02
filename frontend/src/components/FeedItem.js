@@ -2,7 +2,7 @@ import { Link } from 'gatsby';
 import SanityImage from 'gatsby-plugin-sanity-image';
 import React from 'react';
 import styled from 'styled-components';
-import PortableText from '../components/PortableText';
+import SanityPortableText from './SanityPortableText';
 import { dateToLocaleString } from '../utils/formatDates';
 
 const FeedItemStyles = styled.article`
@@ -15,6 +15,12 @@ const FeedItemStyles = styled.article`
   .main-image {
     width: 100%;
     max-width: 500px;
+  }
+  .placeholder {
+    width: 100%;
+    max-width: 500px;
+    height: 100%;
+    min-height: 250px;
   }
   .post-details {
     display: flex;
@@ -78,7 +84,7 @@ const FeedItemStyles = styled.article`
 const FeedItem = ({ post }) => {
   return (
     <FeedItemStyles>
-      {post.mainImage && (
+      {post.mainImage ? (
         <Link to={`/posts/${post.slug.current}`}>
           <SanityImage
             {...post.mainImage}
@@ -87,29 +93,31 @@ const FeedItem = ({ post }) => {
             className="main-image"
           />
         </Link>
+      ) : (
+        <div className="placeholder"></div>
       )}
       <div className="post-details">
         <div className="article-header">
           <Link to={`/posts/${post.slug.current}`}>
-            <h2>{post.title}</h2>
+            <h2>{post?.title}</h2>
           </Link>
           <p>{dateToLocaleString(post.publishedAt)}</p>
         </div>
         <section>
-          {post._rawExcerpt && <PortableText blocks={post._rawExcerpt} />}
+          {post._rawExcerpt && <SanityPortableText blocks={post._rawExcerpt} />}
         </section>
         <div className="article-footer">
           <div className="post-categories">
             {post.categories.map((category, index) => {
               if (index + 1 < post.categories.length) {
                 return (
-                  <p key={category.id}>
-                    {category.title}
+                  <p key={category?.id}>
+                    {category?.title}
                     <span>&ensp;/&ensp;</span>
                   </p>
                 );
               } else {
-                return <p key={category.id}>{category.title}</p>;
+                return <p key={category?.id}>{category?.title}</p>;
               }
             })}
           </div>
@@ -119,12 +127,12 @@ const FeedItem = ({ post }) => {
                 if (index + 1 < post.authors.length) {
                   return (
                     <p key={author.author.id}>
-                      {author.author.name}
+                      {author.author?.name}
                       <span>&ensp;/&ensp;</span>
                     </p>
                   );
                 } else {
-                  return <p key={author.author.id}>{author.author.name}</p>;
+                  return <p key={index}>{author.author.name}</p>;
                 }
               })
             ) : (

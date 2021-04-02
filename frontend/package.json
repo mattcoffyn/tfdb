@@ -24,12 +24,15 @@
     "gatsby-plugin-sanity-image": "^0.6.0-beta.1",
     "gatsby-plugin-styled-components": "^4.0.0",
     "gatsby-source-sanity": "^6.0.5",
+    "get-youtube-id": "^1.0.1",
     "js-search": "^2.0.0",
     "normalize.css": "^8.0.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-helmet": "^6.1.0",
     "react-icons": "^3.11.0",
+    "react-instagram-embed": "^2.0.0",
+    "react-youtube": "^7.13.1",
     "styled-components": "^5.2.0"
   },
   "devDependencies": {

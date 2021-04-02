@@ -1,7 +1,7 @@
 import { graphql, Link } from 'gatsby';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import PortableText from '../components/PortableText';
+import SanityPortableText from '../components/SanityPortableText';
 import SanityImage from 'gatsby-plugin-sanity-image';
 import { dateToLocaleString } from '../utils/formatDates';
 
@@ -29,7 +29,10 @@ const PostStyles = styled.div`
       font-weight: 800;
       font-size: 2rem;
       text-align: right;
-      line-height: 2rem;
+      line-height: 2.2rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
       p {
         display: inline;
         color: var(--red);
@@ -40,10 +43,16 @@ const PostStyles = styled.div`
     }
     .authors {
       color: var(--red);
-      font-size: 1.5rem;
       text-align: right;
       padding-bottom: 2rem;
+      margin-top: 2rem;
       border-bottom: 1px solid var(--white);
+
+      p {
+        line-height: 1.5rem;
+        font-size: 1.5rem;
+        margin: 0;
+      }
       span {
         color: var(--white);
       }
@@ -61,7 +70,7 @@ const PostStyles = styled.div`
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 1rem;
-        margin: 1rem 0;
+        margin: 3rem 0;
         line-height: 2rem;
         a {
           align-self: center;
@@ -80,8 +89,6 @@ const PostStyles = styled.div`
     }
   }
   article {
-    display: grid;
-    grid-template-rows: auto 1fr;
     padding: 1rem;
     .info {
       display: flex;
@@ -93,26 +100,43 @@ const PostStyles = styled.div`
         display: inline;
       }
     }
-    .main-image {
-      width: 100%;
-    }
-    .main-image-caption {
-      font-size: 1.5rem;
-      font-style: italic;
-      margin: -1rem 0 0;
-    }
     .title {
       min-height: 80px;
+      margin: 2rem 0 4rem;
       h2 {
         margin: 0;
-        font-size: 4rem;
+        font-size: 5rem;
         font-weight: 800;
+        line-height: 5rem;
         text-transform: uppercase;
       }
     }
+
     .post-body {
       a {
         color: var(--red);
+      }
+      div {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+      }
+      .insta-post {
+        width: 100%;
+      }
+      /* .instagram-media {
+        min-width: 1000px;!!!
+      } */
+      .main-image {
+        width: 100%;
+      }
+      .main-image-caption {
+        font-size: 1.5rem;
+        font-style: italic;
+        margin: -1rem 0 0;
+        div {
+          width: 100%;
+        }
       }
       blockquote {
         background: rgba(255, 255, 255, 0.1);
@@ -136,6 +160,8 @@ const PostStyles = styled.div`
 `;
 
 const Post = ({ data: { post } }) => {
+  const [hasInsta, setHasInsta] = useState(false);
+
   let results = [];
   post.categories?.map((relatedCategory) => {
     relatedCategory.posts.map((relatedPost) => {
@@ -150,6 +176,15 @@ const Post = ({ data: { post } }) => {
     (v, i, a) => a.findIndex((t) => t._id === v._id) === i
   );
 
+  useEffect(() => {
+    post._rawBody.map((obj) => {
+      if (obj._type === 'instagramPost') {
+        setHasInsta(true);
+      }
+    });
+    console.log('handling insta');
+  }, [post]);
+
   return (
     <PostStyles>
       <aside>
@@ -161,28 +196,14 @@ const Post = ({ data: { post } }) => {
         <div>
           <div className="post-categories">
             {post.categories.map((category, index) => {
-              if (index + 1 < post.categories.length) {
-                return (
-                  <Link
-                    to={`/categories/${category.slug.current}`}
-                    key={category.id}
-                  >
-                    <p>
-                      {category.title}
-                      <span>&ensp;/&ensp;</span>
-                    </p>
-                  </Link>
-                );
-              } else {
-                return (
-                  <Link
-                    to={`/categories/${category.slug.current}`}
-                    key={category.id}
-                  >
-                    <p>{category.title}</p>
-                  </Link>
-                );
-              }
+              return (
+                <Link
+                  to={`/categories/${category.slug.current}`}
+                  key={category.id}
+                >
+                  <p>{category.title}</p>
+                </Link>
+              );
             })}
           </div>
           <div className="authors">
@@ -235,7 +256,7 @@ const Post = ({ data: { post } }) => {
           <h2>{post.title}</h2>
         </div>
         <div className="post-body">
-          {post.mainImage && (
+          {post.mainImage && !hasInsta && (
             <>
               <SanityImage
                 {...post.mainImage}
@@ -246,7 +267,7 @@ const Post = ({ data: { post } }) => {
               <p className="main-image-caption">{post.mainImage.caption}</p>
             </>
           )}
-          {post._rawBody && <PortableText blocks={post._rawBody} />}
+          {post._rawBody && <SanityPortableText blocks={post._rawBody} />}
         </div>
       </article>
     </PostStyles>
