@@ -115,6 +115,9 @@ const PostStyles = styled.div`
     .post-body {
       a {
         color: var(--red);
+        &:visited {
+          color: var(--red);
+        }
       }
       div {
         display: flex;

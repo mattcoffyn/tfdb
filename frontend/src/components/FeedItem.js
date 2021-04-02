@@ -27,6 +27,12 @@ const FeedItemStyles = styled.article`
     flex-direction: column;
     section {
       flex-grow: 2;
+      a {
+        color: red;
+        &:visited {
+          color: red;
+        }
+      }
     }
   }
   .article-header {
